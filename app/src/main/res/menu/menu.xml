@@ -8,7 +8,8 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/historyMenu"
-        android:title="@string/history" />
+        android:title="@string/history"
+        android:visible="true" />
     <item
         android:id="@+id/settingsMenu"
         android:title="@string/settings" />
