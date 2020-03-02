@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Ticket</string>
+    <string name="new_ticket">Nouveau ticket</string>
+    <string name="history">Historique</string>
+    <string name="settings">Paramètres</string>
 </resources>
