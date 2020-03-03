@@ -6,14 +6,14 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Ticket.class}, version = 1)
+@Database(entities = {Ticket.class, Product.class}, version = 1, exportSchema = false)
 public abstract class AppDB extends RoomDatabase {
 
     private static AppDB db;
 
     public static AppDB getDB(Context c){
         if(db == null){
-            db = Room.databaseBuilder(c, AppDB.class, "database-name").build();
+            db = Room.databaseBuilder(c, AppDB.class, "db").build();
         }
 
         return db;

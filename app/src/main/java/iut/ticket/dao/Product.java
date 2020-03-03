@@ -3,6 +3,7 @@ package iut.ticket.dao;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
 import java.util.List;
 
@@ -10,17 +11,11 @@ import java.util.List;
 public class Product {
 
     @PrimaryKey
-    public int id;
+    public int product_id;
 
     public int ticket_id;
-
-    @ColumnInfo(name = "name")
     String name;
-
-    @ColumnInfo(name = "count")
     int count;
-
-    @ColumnInfo(name = "price")
     double price;
 
     public Product(String name, int count, double price){

@@ -10,12 +10,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import iut.ticket.dao.AppDB;
+import iut.ticket.dao.Product;
 import iut.ticket.dao.Ticket;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,12 +61,12 @@ public class MainActivity extends AppCompatActivity {
         Bitmap imageBitmap = (Bitmap) extras.get("data");
 
         Random r = new Random();
-        List<Ticket.Product> products = new ArrayList<>();
+        List<Product> products = new ArrayList<>();
 
-        for(int nbProduit = 0; nbProduit < 1 + r.nextInt(10); nbProduit++){
-            products.add(new Ticket.Product(productExample.get(r.nextInt(productExample.size())), r.nextInt(10), (Math.round(r.nextDouble()*100.0)/100.0) + r.nextInt(30)));
-        }
+        for(int nbProduct = 0; nbProduct < 1 + r.nextInt(10); nbProduct++)
+            products.add(new Product(productExample.get(r.nextInt(productExample.size())), r.nextInt(10), (Math.round(r.nextDouble() * 100.0) / 100.0) + r.nextInt(30)));
 
-        AppDB.getDB(getApplicationContext()).ticketDao().insertAll(new Ticket());
+
+        AppDB.getDB(getApplicationContext()).ticketDao().insertTicketWithProducts(new Ticket(imageBitmap), products);
     }
 }
