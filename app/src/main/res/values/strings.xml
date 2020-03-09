@@ -4,4 +4,9 @@
     <string name="history">Historique</string>
     <string name="settings">Paramètres</string>
     <string name="takePicture">Prendre une photo</string>
+    <string name="total" translatable="false">%.2f €</string>
+    <plurals name="products">
+        <item quantity="one">%s produit</item>
+        <item quantity="other">%s produits</item>
+    </plurals>
 </resources>

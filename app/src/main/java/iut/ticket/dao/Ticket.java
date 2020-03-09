@@ -1,6 +1,7 @@
 package iut.ticket.dao;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -13,7 +14,7 @@ import java.util.List;
 @Entity
 public class Ticket {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int ticket_id;
 
     public String nom_magasin;
@@ -26,4 +27,9 @@ public class Ticket {
         imageBitmap.compress(Bitmap.CompressFormat.JPEG,100, stream);
         this.image = stream.toByteArray();
     }
+
+    public Bitmap getImage(){
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
+    }
+
 }

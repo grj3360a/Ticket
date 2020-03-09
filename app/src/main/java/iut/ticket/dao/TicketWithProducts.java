@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TicketWithProducts {
     @Embedded
-    public Ticket user;
+    public Ticket ticket;
     @Relation(
             parentColumn = "ticket_id",
             entityColumn = "product_id"

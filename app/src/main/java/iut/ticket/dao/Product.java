@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class Product {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int product_id;
 
     public int ticket_id;

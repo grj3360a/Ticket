@@ -13,7 +13,7 @@ public abstract class AppDB extends RoomDatabase {
 
     public static AppDB getDB(Context c){
         if(db == null){
-            db = Room.databaseBuilder(c, AppDB.class, "db").build();
+            db = Room.databaseBuilder(c, AppDB.class, "db").allowMainThreadQueries().fallbackToDestructiveMigration().build();
         }
 
         return db;
