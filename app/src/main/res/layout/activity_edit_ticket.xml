@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditTicketActivity">
+
+    <ImageView
+        android:id="@+id/ticketPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/idTicket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toEndOf="@+id/ticketPhoto"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="XXXXX" />
+
+    <RadioGroup
+        android:id="@+id/magasinGroup"
+        android:layout_width="113dp"
+        android:layout_height="131dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toEndOf="@+id/ticketPhoto"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/leclerc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/leclerc" />
+
+        <RadioButton
+            android:id="@+id/carouf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/carefour" />
+
+        <RadioButton
+            android:id="@+id/casino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/casino" />
+
+        <RadioButton
+            android:id="@+id/autre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Autre" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/totalTicket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toEndOf="@+id/magasinGroup"
+        app:layout_constraintTop_toTopOf="@+id/magasinGroup"
+        tools:text="XX €" />
+
+    <ImageButton
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <ListView
+        android:id="@+id/listProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:entries="@android:array/phoneTypes" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/commentaryHint"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/listProducts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ticketPhoto" />
+</androidx.constraintlayout.widget.ConstraintLayout>

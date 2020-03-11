@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -20,9 +23,11 @@ import java.util.Random;
 import iut.ticket.dao.AppDB;
 import iut.ticket.dao.Product;
 import iut.ticket.dao.Ticket;
+import iut.ticket.dao.TicketWithProducts;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final Random r = new Random();
     private static List<String> productExample = Arrays.asList(
             "Brique de lait", "Fanta", "Coca", "Carotte", "Viande bovine",
             "Petit pois", "Corn flakes", "Blanc de poulet", "Rillettes", "DVD Collector Arnault Schwacenégeur",
@@ -46,9 +51,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK)
             this.processImage(data);
-        }
     }
 
     @Override
@@ -59,9 +63,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.historyMenu:
                 startActivity(new Intent(this, HistoryActivity.class));
                 return true;
-            case R.id.settingsMenu:
-                //TODO
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -69,21 +70,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void onTakePhoto(View v){
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null)
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
     }
 
     public void processImage(Intent data){
         Bundle extras = data.getExtras();
         Bitmap imageBitmap = (Bitmap) extras.get("data");
 
-        Random r = new Random();
-        List<Product> products = new ArrayList<>();
+        RadioGroup group = findViewById(R.id.magasinGroup);
+        String nom_magasin = ((RadioButton) findViewById(group.getCheckedRadioButtonId())).getText().toString();
 
-        for(int nbProduct = 0; nbProduct < 1 + r.nextInt(10); nbProduct++)
-            products.add(new Product(productExample.get(r.nextInt(productExample.size())), r.nextInt(10), (Math.round(r.nextDouble() * 100.0) / 100.0) + r.nextInt(30)));
+        Product[] products = new Product[1 + r.nextInt(10)];
 
-        AppDB.getDB(getApplicationContext()).ticketDao().insertTicketWithProducts(new Ticket(imageBitmap), products);
+        Ticket t = new Ticket(nom_magasin, imageBitmap);//TODO Nom_magasin
+
+        for (int i = 0; i < products.length; i++)
+            products[i] = new Product(productExample.get(r.nextInt(productExample.size())), r.nextInt(10), (Math.round(r.nextDouble() * 100.0) / 100.0) + r.nextInt(30));
+
+        AppDB.getDB(getApplicationContext()).ticketDao().insertTicketWithProducts(t, products);
+
+        Toast.makeText(getApplicationContext(), getString(R.string.ticketAdded), Toast.LENGTH_SHORT).show();
     }
 }

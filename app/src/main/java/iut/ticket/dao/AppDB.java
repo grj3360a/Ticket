@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Ticket.class, Product.class}, version = 1, exportSchema = false)
+@Database(entities = {Ticket.class, Product.class}, version = 3, exportSchema = false)
 public abstract class AppDB extends RoomDatabase {
 
     private static AppDB db;

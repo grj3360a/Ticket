@@ -1,5 +1,7 @@
 package iut.ticket.dao;
 
+import android.util.Log;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -11,8 +13,8 @@ import java.util.List;
 @Dao
 public abstract class TicketDao {
 
-    public void insertTicketWithProducts(Ticket ticket, List<Product> products){
-        insertAll(ticket);
+    public void insertTicketWithProducts(Ticket ticket, Product... products){
+        ticket.ticket_id = insert(ticket);
 
         for(Product product : products)
             product.ticket_id = ticket.ticket_id;
@@ -21,7 +23,7 @@ public abstract class TicketDao {
     }
 
     @Insert
-    public abstract void insertAll(List<Product> pets);
+    public abstract void insertAll(Product... products);
 
     @Transaction
     @Query("SELECT * FROM Ticket")
@@ -31,8 +33,11 @@ public abstract class TicketDao {
     @Query("SELECT * FROM Ticket WHERE ticket_id = :ticket_id")
     public abstract TicketWithProducts getTicketWithProductsFromID(int ticket_id);
 
+    @Query("SELECT * FROM Product")
+    public abstract List<Product> getAllProducts();
+
     @Insert
-    public abstract void insertAll(Ticket... tickets);
+    public abstract long insert(Ticket ticket);
 
     public void delete(TicketWithProducts ticketWithProducts){
         for(Product p : ticketWithProducts.products){

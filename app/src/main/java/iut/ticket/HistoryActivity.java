@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
@@ -17,7 +18,13 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         ListView listView = findViewById(R.id.listHistory);
-        listView.setAdapter(new TicketAdapter(AppDB.getDB(getApplicationContext()).ticketDao().getTicketWithProducts(), getApplicationContext()));
+        listView.setAdapter(new TicketAdapter(getApplicationContext()));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     @Override
@@ -27,9 +34,6 @@ public class HistoryActivity extends AppCompatActivity {
                 startActivity(new Intent(this, MainActivity.class));
                 return true;
             case R.id.historyMenu:
-                return true;
-            case R.id.settingsMenu:
-                //TODO
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

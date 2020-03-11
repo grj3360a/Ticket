@@ -5,6 +5,12 @@
     <string name="settings">Paramètres</string>
     <string name="takePicture">Prendre une photo</string>
     <string name="total" translatable="false">%.2f €</string>
+    <string name="carefour">Carefour</string>
+    <string name="casino">Casino</string>
+    <string name="leclerc">Leclerc</string>
+    <string name="ticketAdded">Ticket ajouté !</string>
+    <string name="commentaryHint">Commentaires</string>
+    <string name="autre">Autre</string>
     <plurals name="products">
         <item quantity="one">%s produit</item>
         <item quantity="other">%s produits</item>

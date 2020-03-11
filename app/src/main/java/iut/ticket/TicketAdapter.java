@@ -1,7 +1,8 @@
 package iut.ticket;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,20 +23,22 @@ public class TicketAdapter extends ArrayAdapter<TicketWithProducts> implements V
     private final Context context;
     private final TicketDao ticketDao;
 
-    public TicketAdapter(List<TicketWithProducts> data, Context context) {
-        super(context, R.layout.history_list_view, data);
-        this.dataSet = data;
+    public TicketAdapter(Context context) {
+        super(context, R.layout.history_list_view);
+        this.ticketDao = AppDB.getDB(context).ticketDao();
+        this.dataSet = this.ticketDao.getTicketWithProducts();
         this.context = context;
-        this.ticketDao = AppDB.getDB(context).ticketDao();;
     }
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(context, "Click !", Toast.LENGTH_SHORT).show();
         int idTicket = Integer.parseInt(((TextView) v.findViewById(R.id.idTicket)).getText().toString());
         TicketWithProducts ticketWithProducts = ticketDao.getTicketWithProductsFromID(idTicket);
-        ticketDao.delete(ticketWithProducts);
-        this.remove(ticketWithProducts);
+
+        Intent in = new Intent(this.context, EditTicketActivity.class);
+        in.putExtra("ticket", ticketWithProducts);
+        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(in);
     }
 
     @Override
@@ -79,7 +82,7 @@ public class TicketAdapter extends ArrayAdapter<TicketWithProducts> implements V
 
         ImageView imageView = convertView.findViewById(R.id.ticketPhoto);
         TextView idView = convertView.findViewById(R.id.idTicket);
-        TextView productsView = convertView.findViewById(R.id.products);
+        TextView productsView = convertView.findViewById(R.id.productName);
         TextView totalView = convertView.findViewById(R.id.totalTicket);
 
         imageView.setImageBitmap(dataModel.ticket.getImage());

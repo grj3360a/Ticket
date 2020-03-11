@@ -5,4 +5,10 @@
     <string name="new_ticket">Nouveau ticket</string>
     <string name="settings">Paramètres</string>
     <string name="takePicture">Prendre une photo</string>
+    <string name="carefour">Carefour</string>
+    <string name="casino">Casino</string>
+    <string name="leclerc">Leclerc</string>
+    <string name="ticketAdded">Ticket ajouté !</string>
+    <string name="commentaryHint">Commentaires</string>
+    <string name="autre">Autre</string>
 </resources>

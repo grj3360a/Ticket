@@ -9,23 +9,27 @@ import androidx.room.PrimaryKey;
 import androidx.room.Relation;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Ticket {
+public class Ticket implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
-    public int ticket_id;
+    public long ticket_id;
 
+    public String commentaire;
     public String nom_magasin;
     public byte[] image;
 
     public Ticket(){}
 
-    public Ticket(Bitmap imageBitmap) {
+    public Ticket(String nom_magasin, Bitmap imageBitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         imageBitmap.compress(Bitmap.CompressFormat.JPEG,100, stream);
+        this.nom_magasin = nom_magasin;
         this.image = stream.toByteArray();
+        this.commentaire = "";
     }
 
     public Bitmap getImage(){
