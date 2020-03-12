@@ -10,24 +10,23 @@
         android:id="@+id/imageButton"
         android:layout_width="180dp"
         android:layout_height="180dp"
+        android:layout_marginTop="70dp"
         android:contentDescription="@string/takePicture"
         android:onClick="onTakePhoto"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
+        app:layout_constraintTop_toBottomOf="@+id/magasinGroup"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
     <RadioGroup
         android:id="@+id/magasinGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="80dp"
         android:checkedButton="@id/carouf"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton"
-        app:layout_constraintStart_toStartOf="@+id/imageButton">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleMain">
 
         <RadioButton
             android:id="@+id/carouf"
@@ -53,4 +52,28 @@
             android:layout_height="wrap_content"
             android:text="@string/autre" />
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/titleMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/titleMainScreen"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/magasinGroupTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/magasinGroupTitle"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/magasinGroup"
+        app:layout_constraintEnd_toEndOf="@+id/magasinGroup"
+        app:layout_constraintStart_toStartOf="@+id/magasinGroup" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.historyMenu:
                 startActivity(new Intent(this, HistoryActivity.class));
                 return true;
+            case R.id.creditMenu:
+                startActivity(new Intent(this, CreditActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

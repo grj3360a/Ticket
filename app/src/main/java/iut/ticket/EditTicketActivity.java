@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import iut.ticket.dao.AppDB;
@@ -27,6 +31,16 @@ public class EditTicketActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.idTicket)).setText(this.ticketWithProducts.ticket.ticket_id + "");
         ((TextView) findViewById(R.id.totalTicket)).setText(getString(R.string.total, this.ticketWithProducts.total()));
 
+        if(this.ticketWithProducts.ticket.nom_magasin.equals(getString(R.string.leclerc))){
+            ((RadioButton) findViewById(R.id.leclerc)).setChecked(true);
+        } else if(this.ticketWithProducts.ticket.nom_magasin.equals(getString(R.string.carefour))){
+            ((RadioButton) findViewById(R.id.carouf)).setChecked(true);
+        } else if(this.ticketWithProducts.ticket.nom_magasin.equals(getString(R.string.casino))){
+            ((RadioButton) findViewById(R.id.casino)).setChecked(true);
+        } else {
+            ((RadioButton) findViewById(R.id.autre)).setChecked(true);
+        }
+
         ImageView imageView = findViewById(R.id.ticketPhoto);
         imageView.setImageBitmap(this.ticketWithProducts.ticket.getImage());
 
@@ -37,6 +51,9 @@ public class EditTicketActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        ListView listView = findViewById(R.id.listProducts);
+        listView.setAdapter(new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, this.ticketWithProducts.products));
     }
 
     @Override
@@ -53,6 +70,9 @@ public class EditTicketActivity extends AppCompatActivity {
                 return true;
             case R.id.historyMenu:
                 startActivity(new Intent(this, HistoryActivity.class));
+                return true;
+            case R.id.creditMenu:
+                startActivity(new Intent(this, CreditActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

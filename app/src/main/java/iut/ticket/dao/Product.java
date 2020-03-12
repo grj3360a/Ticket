@@ -24,4 +24,9 @@ public class Product implements Serializable {
         this.count = count;
         this.price = price;
     }
+
+    @Override
+    public String toString(){
+        return this.name + " x" + count;
+    }
 }

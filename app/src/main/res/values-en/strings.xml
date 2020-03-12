@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TicketReader</string>
+    <string name="app_name">Ticket Reader</string>
     <string name="history">Historic</string>
     <string name="new_ticket">New ticket</string>
     <string name="settings">Settings</string>
@@ -11,4 +11,13 @@
     <string name="ticketAdded">Ticket added !</string>
     <string name="commentaryHint">Comments</string>
     <string name="autre">Other</string>
+    <string name="credit">Credits</string>
+    <string name="credit_content" translatable="false">Made by :</string>
+    <string name="avecAide">With the help of :</string>
+    <string name="titleMainScreen">New ticket</string>
+    <string name="magasinGroupTitle">Ticket type</string>
+    <plurals name="products">
+        <item quantity="one">%s product</item>
+        <item quantity="other">%s products</item>
+    </plurals>
 </resources>

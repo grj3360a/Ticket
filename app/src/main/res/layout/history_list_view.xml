@@ -22,9 +22,24 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toEndOf="@+id/ticketPhoto"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="3213211654" />
+
+    <TextView
+        android:id="@+id/magasin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/ticketPhoto"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/leclerc" />
 
     <TextView
         android:id="@+id/productName"

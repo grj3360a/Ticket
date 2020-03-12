@@ -82,11 +82,13 @@ public class TicketAdapter extends ArrayAdapter<TicketWithProducts> implements V
 
         ImageView imageView = convertView.findViewById(R.id.ticketPhoto);
         TextView idView = convertView.findViewById(R.id.idTicket);
+        TextView magasinView = convertView.findViewById(R.id.magasin);
         TextView productsView = convertView.findViewById(R.id.productName);
         TextView totalView = convertView.findViewById(R.id.totalTicket);
 
         imageView.setImageBitmap(dataModel.ticket.getImage());
         idView.setText(dataModel.ticket.ticket_id + "");
+        magasinView.setText(dataModel.ticket.nom_magasin);
         productsView.setText(context.getResources().getQuantityString(R.plurals.products, dataModel.products.size(), dataModel.products.size()));
         totalView.setText(context.getString(R.string.total, dataModel.total()));
 

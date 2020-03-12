@@ -11,6 +11,15 @@
     <string name="ticketAdded">Ticket ajouté !</string>
     <string name="commentaryHint">Commentaires</string>
     <string name="autre">Autre</string>
+    <string name="credit">Crédits</string>
+    <string name="credit_content">Fait par :</string>
+    <string name="author1" translatable="false">Geraldes Jocel1n</string>
+    <string name="author2" translatable="false" >Salvan Rom1n</string>
+    <string name="avecAide">Avec l\'aide de :</string>
+    <string name="assistAuthor" translatable="false" >Arnault Brice</string>
+    <string name="iut_logo" translatable="false" >Iut logo</string>
+    <string name="titleMainScreen">Nouveau ticket</string>
+    <string name="magasinGroupTitle">Type de ticket</string>
     <plurals name="products">
         <item quantity="one">%s produit</item>
         <item quantity="other">%s produits</item>
