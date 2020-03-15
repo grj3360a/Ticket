@@ -20,6 +20,7 @@
     <string name="iut_logo" translatable="false" >Iut logo</string>
     <string name="titleMainScreen">Nouveau ticket</string>
     <string name="magasinGroupTitle">Type de ticket</string>
+    <string name="iut_link" translatable="false">https://iut.univ-tlse3.fr/</string>
     <plurals name="products">
         <item quantity="one">%s produit</item>
         <item quantity="other">%s produits</item>
