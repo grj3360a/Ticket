@@ -1,8 +1,12 @@
 package iut.ticket;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -25,7 +29,7 @@ import iut.ticket.dao.Product;
 import iut.ticket.dao.Ticket;
 import iut.ticket.dao.TicketWithProducts;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MenuedActivity {
 
     private final Random r = new Random();
     private static List<String> productExample = Arrays.asList(
@@ -35,17 +39,12 @@ public class MainActivity extends AppCompatActivity {
             "Spaghetti", "Pâtes", "Coucous"
     );
     private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_PERMISSION = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
     }
 
     @Override
@@ -55,23 +54,15 @@ public class MainActivity extends AppCompatActivity {
             this.processImage(data);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.returnToMainActivity:
-                return true;
-            case R.id.historyMenu:
-                startActivity(new Intent(this, HistoryActivity.class));
-                return true;
-            case R.id.creditMenu:
-                startActivity(new Intent(this, CreditActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
+    /**
+     * OnClick on the main photo button
+     */
     public void onTakePhoto(View v){
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_PERMISSION);
+            return;
+        }
+
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null)
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);

@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import iut.ticket.dao.AppDB;
 
-public class HistoryActivity extends AppCompatActivity {
+public class HistoryActivity extends MenuedActivity {
 
     private ListView listView;
 
@@ -26,28 +26,5 @@ public class HistoryActivity extends AppCompatActivity {
         this.listView = findViewById(R.id.listHistory);
         this.listView.setAdapter(new TicketAdapter(getApplicationContext()));
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.returnToMainActivity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.historyMenu:
-                return true;
-            case R.id.creditMenu:
-                startActivity(new Intent(this, CreditActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
 
 }

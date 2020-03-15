@@ -17,9 +17,13 @@ import android.widget.TextView;
 import iut.ticket.dao.AppDB;
 import iut.ticket.dao.TicketWithProducts;
 
-public class EditTicketActivity extends AppCompatActivity {
+public class EditTicketActivity extends MenuedActivity {
 
     private TicketWithProducts ticketWithProducts;
+
+    private TextView idTicket;
+    private TextView totalTicket;
+    private ListView listProducts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +32,8 @@ public class EditTicketActivity extends AppCompatActivity {
 
         this.ticketWithProducts = (TicketWithProducts) getIntent().getSerializableExtra("ticket");
 
-        ((TextView) findViewById(R.id.idTicket)).setText(this.ticketWithProducts.ticket.ticket_id + "");
-        ((TextView) findViewById(R.id.totalTicket)).setText(getString(R.string.total, this.ticketWithProducts.total()));
+        (this.idTicket = findViewById(R.id.idTicket)).setText(this.ticketWithProducts.ticket.ticket_id + "");
+        (this.totalTicket = findViewById(R.id.totalTicket)).setText(getString(R.string.total, this.ticketWithProducts.total()));
 
         if(this.ticketWithProducts.ticket.nom_magasin.equals(getString(R.string.leclerc))){
             ((RadioButton) findViewById(R.id.leclerc)).setChecked(true);
@@ -52,30 +56,12 @@ public class EditTicketActivity extends AppCompatActivity {
             }
         });
 
-        ListView listView = findViewById(R.id.listProducts);
-        listView.setAdapter(new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, this.ticketWithProducts.products));
+        (this.listProducts = findViewById(R.id.listProducts)).setAdapter(new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, this.ticketWithProducts.products));
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.returnToMainActivity:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.historyMenu:
-                startActivity(new Intent(this, HistoryActivity.class));
-                return true;
-            case R.id.creditMenu:
-                startActivity(new Intent(this, CreditActivity.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    protected void onStop(){
+        super.onStop();
+        //TODO Save
     }
 }
