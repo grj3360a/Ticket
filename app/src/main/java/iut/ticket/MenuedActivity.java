@@ -1,13 +1,10 @@
 package iut.ticket;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 /**
  * Simplify the implementation of menu in all activities by unifying all in one class.
@@ -22,7 +19,7 @@ public class MenuedActivity extends AppCompatActivity {
         if(this instanceof MainActivity)//Don't re-open the same activity from the menu
             menu.findItem(R.id.photoMenu).setVisible(false);
 
-        if(this instanceof HistoryActivity)//Don't re-open the same activity from the menu
+        if(this instanceof ListTicketActivity)//Don't re-open the same activity from the menu
             menu.findItem(R.id.historyMenu).setVisible(false);
 
         if(this instanceof CreditActivity)//Don't re-open the same activity from the menu
@@ -41,7 +38,7 @@ public class MenuedActivity extends AppCompatActivity {
                 return true;
 
             case R.id.historyMenu:
-                startActivity(new Intent(this, HistoryActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(this, ListTicketActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 return true;
 
             case R.id.creditMenu:

@@ -12,12 +12,13 @@
     <string name="commentaryHint">Commentaires</string>
     <string name="autre">Autre</string>
     <string name="credit">Crédits</string>
-    <string name="credit_content" translatable="false">Fait par :</string>
+    <string name="credit_content">Fait par :</string>
     <string name="avecAide">Avec l\'aide de :</string>
     <string name="titleMainScreen">Nouveau ticket</string>
     <string name="magasinGroupTitle">Type de ticket</string>
     <string name="emptyHistory">Aucun ticket enregistré...</string>
     <string name="statsTitle">Statistiques</string>
+    <string name="ticketSaved">Modifications enregistrées</string>
     <plurals name="products">
         <item quantity="one">%s produit</item>
         <item quantity="other">%s produits</item>

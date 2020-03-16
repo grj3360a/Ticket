@@ -12,7 +12,7 @@
     <string name="commentaryHint">Comments</string>
     <string name="autre">Other</string>
     <string name="credit">Credits</string>
-    <string name="credit_content" translatable="false">Made by :</string>
+    <string name="credit_content">Made by :</string>
     <string name="avecAide">With the help of :</string>
     <string name="titleMainScreen">New ticket</string>
     <string name="magasinGroupTitle">Ticket type</string>

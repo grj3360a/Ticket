@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -85,6 +86,9 @@ public class MainActivity extends MenuedActivity {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
     }
 
+    /**
+     * Process the image contained in "Intent data"
+     */
     public void processImage(Intent data){
         Bundle extras = data.getExtras();
         Bitmap imageBitmap = (Bitmap) extras.get("data");
@@ -92,9 +96,14 @@ public class MainActivity extends MenuedActivity {
         RadioGroup group = findViewById(R.id.magasinGroup);
         String nom_magasin = ((RadioButton) findViewById(group.getCheckedRadioButtonId())).getText().toString();
 
-        Product[] products = new Product[1 + r.nextInt(10)];
+        /*
+        Après de multiple tentative d'utiliser l'OCR de google afin de reconnaitre le texte des tickets,
+        nous avons préferer créer des produits fictifs dans le but de démontrer l'utiliter d'une
+        tel application.
+         */
 
-        Ticket t = new Ticket(nom_magasin, imageBitmap);//TODO Nom_magasin
+        Product[] products = new Product[1 + r.nextInt(10)];
+        Ticket t = new Ticket(nom_magasin, imageBitmap);
 
         for (int i = 0; i < products.length; i++)
             products[i] = new Product(productExample.get(r.nextInt(productExample.size())), r.nextInt(3) + 1, (Math.round(r.nextDouble() * 100.0) / 100.0) + r.nextInt(30));

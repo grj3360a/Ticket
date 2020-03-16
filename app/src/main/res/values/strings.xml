@@ -4,7 +4,7 @@
     <string name="history">Historique</string>
     <string name="settings">Paramètres</string>
     <string name="takePicture">Prendre une photo</string>
-    <string name="total" translatable="false">%.2f €</string>
+    <string name="total" translatable="false">Total: %.2f €</string>
     <string name="carefour">Carefour</string>
     <string name="casino">Casino</string>
     <string name="leclerc">Leclerc</string>
@@ -13,7 +13,7 @@
     <string name="autre">Autre</string>
     <string name="credit">Crédits</string>
     <string name="credit_content">Fait par :</string>
-    <string name="author1" translatable="false">Geraldes Jocel1n</string>
+    <string name="author1" translatable="false">Geraldes Jocelyn</string>
     <string name="author2" translatable="false" >Salvan Rom1n</string>
     <string name="avecAide">Avec l\'aide de :</string>
     <string name="assistAuthor" translatable="false" >Arnault Brice</string>
@@ -23,6 +23,7 @@
     <string name="iut_link" translatable="false">https://iut.univ-tlse3.fr/</string>
     <string name="emptyHistory">Aucun ticket enregistré...</string>
     <string name="statsTitle">Statistiques</string>
+    <string name="ticketSaved">Modifications enregistrées</string>
     <plurals name="tickets">
         <item quantity="one">%s ticket</item>
         <item quantity="other">%s tickets</item>

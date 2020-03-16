@@ -13,6 +13,9 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import iut.ticket.dao.AppDB;
 import iut.ticket.dao.TicketWithProducts;
@@ -45,6 +48,9 @@ public class EditTicketActivity extends MenuedActivity {
             ((RadioButton) findViewById(R.id.autre)).setChecked(true);
         }
 
+        TextView comments = findViewById(R.id.comments);
+        comments.setText(this.ticketWithProducts.ticket.commentaire);
+
         ImageView imageView = findViewById(R.id.ticketPhoto);
         imageView.setImageBitmap(this.ticketWithProducts.ticket.getImage());
 
@@ -62,6 +68,12 @@ public class EditTicketActivity extends MenuedActivity {
     @Override
     protected void onStop(){
         super.onStop();
-        //TODO Save
+
+        RadioGroup group = findViewById(R.id.magasinGroup);
+        ticketWithProducts.ticket.nom_magasin = ((RadioButton) findViewById(group.getCheckedRadioButtonId())).getText().toString();
+        ticketWithProducts.ticket.commentaire = ((TextView) findViewById(R.id.comments)).getText().toString();
+
+        AppDB.getTicketDao().update(ticketWithProducts);
+        Toast.makeText(getApplicationContext(), getString(R.string.ticketSaved), Toast.LENGTH_SHORT).show();
     }
 }
