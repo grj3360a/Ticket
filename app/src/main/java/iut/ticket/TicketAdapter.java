@@ -19,12 +19,10 @@ import iut.ticket.dao.TicketWithProducts;
 
 public class TicketAdapter extends ArrayAdapter<TicketWithProducts> implements View.OnClickListener {
 
-    private final List<TicketWithProducts> dataSet;
     private final Context context;
 
     public TicketAdapter(Context context) {
-        super(context, R.layout.history_list_view);
-        this.dataSet = AppDB.getTicketDao().getTicketWithProducts();
+        super(context, R.layout.history_list_view, AppDB.getTicketDao().getTicketWithProducts());
         this.context = context;
     }
 
@@ -37,35 +35,6 @@ public class TicketAdapter extends ArrayAdapter<TicketWithProducts> implements V
         in.putExtra("ticket", ticketWithProducts);
         in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(in);
-    }
-
-    @Override
-    public int getCount(){
-        return this.dataSet.size();
-    }
-
-    @Override
-    public TicketWithProducts getItem(int i){
-        return this.dataSet.get(i);
-    }
-
-    @Override
-    public long getItemId(int i){
-        return i;
-    }
-
-    @Override
-    public void add(TicketWithProducts ticketWithProducts){
-        this.dataSet.add(ticketWithProducts);
-        super.add(ticketWithProducts);
-        this.notifyDataSetChanged();
-    }
-
-    @Override
-    public void remove(TicketWithProducts ticketWithProducts){
-        this.dataSet.remove(ticketWithProducts);
-        super.remove(ticketWithProducts);
-        this.notifyDataSetChanged();
     }
 
     @Override
