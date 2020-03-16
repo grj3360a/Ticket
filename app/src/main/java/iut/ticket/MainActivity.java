@@ -16,7 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -45,6 +48,20 @@ public class MainActivity extends MenuedActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AppDB.createDB(getApplicationContext());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        TextView nbTickets = findViewById(R.id.nbTickets);
+        TextView totalTickets = findViewById(R.id.totalTickets);
+        int nbTicket = AppDB.getTicketDao().getTicketWithProducts().size();
+
+        nbTickets.setText(getResources().getQuantityString(R.plurals.tickets, nbTicket, nbTicket));
+        totalTickets.setText(getString(R.string.total, AppDB.getTicketDao().total()));
     }
 
     @Override
@@ -58,7 +75,7 @@ public class MainActivity extends MenuedActivity {
      * OnClick on the main photo button
      */
     public void onTakePhoto(View v){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_PERMISSION);
             return;
         }
@@ -80,9 +97,9 @@ public class MainActivity extends MenuedActivity {
         Ticket t = new Ticket(nom_magasin, imageBitmap);//TODO Nom_magasin
 
         for (int i = 0; i < products.length; i++)
-            products[i] = new Product(productExample.get(r.nextInt(productExample.size())), r.nextInt(10), (Math.round(r.nextDouble() * 100.0) / 100.0) + r.nextInt(30));
+            products[i] = new Product(productExample.get(r.nextInt(productExample.size())), r.nextInt(3) + 1, (Math.round(r.nextDouble() * 100.0) / 100.0) + r.nextInt(30));
 
-        AppDB.getDB(getApplicationContext()).ticketDao().insertTicketWithProducts(t, products);
+        AppDB.getTicketDao().insertTicketWithProducts(t, products);
 
         Toast.makeText(getApplicationContext(), getString(R.string.ticketAdded), Toast.LENGTH_SHORT).show();
     }

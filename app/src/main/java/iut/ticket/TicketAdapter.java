@@ -21,19 +21,17 @@ public class TicketAdapter extends ArrayAdapter<TicketWithProducts> implements V
 
     private final List<TicketWithProducts> dataSet;
     private final Context context;
-    private final TicketDao ticketDao;
 
     public TicketAdapter(Context context) {
         super(context, R.layout.history_list_view);
-        this.ticketDao = AppDB.getDB(context).ticketDao();
-        this.dataSet = this.ticketDao.getTicketWithProducts();
+        this.dataSet = AppDB.getTicketDao().getTicketWithProducts();
         this.context = context;
     }
 
     @Override
     public void onClick(View v) {
         int idTicket = Integer.parseInt(((TextView) v.findViewById(R.id.idTicket)).getText().toString());
-        TicketWithProducts ticketWithProducts = ticketDao.getTicketWithProductsFromID(idTicket);
+        TicketWithProducts ticketWithProducts = AppDB.getTicketDao().getTicketWithProductsFromID(idTicket);
 
         Intent in = new Intent(this.context, EditTicketActivity.class);
         in.putExtra("ticket", ticketWithProducts);

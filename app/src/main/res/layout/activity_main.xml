@@ -6,53 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginTop="70dp"
-        android:contentDescription="@string/takePicture"
-        android:onClick="onTakePhoto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/magasinGroup"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
-
-    <RadioGroup
-        android:id="@+id/magasinGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:checkedButton="@id/carouf"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleMain">
-
-        <RadioButton
-            android:id="@+id/carouf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/carefour" />
-
-        <RadioButton
-            android:id="@+id/leclerc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/leclerc" />
-
-        <RadioButton
-            android:id="@+id/casino"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/casino" />
-
-        <RadioButton
-            android:id="@+id/autre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/autre" />
-    </RadioGroup>
-
     <TextView
         android:id="@+id/titleMain"
         android:layout_width="wrap_content"
@@ -66,14 +19,114 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/magasinGroupTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="@string/magasinGroupTitle"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/magasinGroup"
-        app:layout_constraintEnd_toEndOf="@+id/magasinGroup"
-        app:layout_constraintStart_toStartOf="@+id/magasinGroup" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/newTicketElements"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleMain">
+
+        <TextView
+            android:id="@+id/magasinGroupTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/magasinGroupTitle"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/magasinGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:checkedButton="@id/carouf"
+            app:layout_constraintEnd_toEndOf="@+id/magasinGroupTitle"
+            app:layout_constraintStart_toStartOf="@+id/magasinGroupTitle"
+            app:layout_constraintTop_toBottomOf="@+id/magasinGroupTitle">
+
+            <RadioButton
+                android:id="@+id/carouf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/carefour" />
+
+            <RadioButton
+                android:id="@+id/leclerc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/leclerc" />
+
+            <RadioButton
+                android:id="@+id/casino"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/casino" />
+
+            <RadioButton
+                android:id="@+id/autre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/autre" />
+        </RadioGroup>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginEnd="30dp"
+            android:contentDescription="@string/takePicture"
+            android:onClick="onTakePhoto"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_add_a_photo_black_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/statsElements"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newTicketElements">
+
+        <TextView
+            android:id="@+id/statsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/statsTitle"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nbTickets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/statsTitle"
+            app:layout_constraintStart_toStartOf="@+id/statsTitle"
+            app:layout_constraintTop_toBottomOf="@+id/statsTitle"
+            tools:text="XX tickets" />
+
+        <TextView
+            android:id="@+id/totalTickets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/statsTitle"
+            app:layout_constraintStart_toStartOf="@+id/statsTitle"
+            app:layout_constraintTop_toBottomOf="@+id/nbTickets"
+            tools:text="XX €" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

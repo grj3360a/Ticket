@@ -1,11 +1,13 @@
 package iut.ticket;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 /**
  * Simplify the implementation of menu in all activities by unifying all in one class.
@@ -16,6 +18,16 @@ public class MenuedActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
+
+        if(this instanceof MainActivity)//Don't re-open the same activity from the menu
+            menu.findItem(R.id.photoMenu).setVisible(false);
+
+        if(this instanceof HistoryActivity)//Don't re-open the same activity from the menu
+            menu.findItem(R.id.historyMenu).setVisible(false);
+
+        if(this instanceof CreditActivity)//Don't re-open the same activity from the menu
+            menu.findItem(R.id.creditMenu).setVisible(false);
+
         return true;
     }
 
@@ -24,22 +36,16 @@ public class MenuedActivity extends AppCompatActivity {
 
         //Which item is selected ?
         switch (item.getItemId()) {
-            case R.id.returnToMainActivity:
-                if(this instanceof MainActivity)//Don't re-open the same activity from the menu
-                    return true;
-                startActivity(new Intent(this, MainActivity.class));
+            case R.id.photoMenu:
+                startActivity(new Intent(this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 return true;
 
             case R.id.historyMenu:
-                if(this instanceof HistoryActivity)//Don't re-open the same activity from the menu
-                    return true;
-                startActivity(new Intent(this, HistoryActivity.class));
+                startActivity(new Intent(this, HistoryActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 return true;
 
             case R.id.creditMenu:
-                if(this instanceof CreditActivity)//Don't re-open the same activity from the menu
-                    return true;
-                startActivity(new Intent(this, CreditActivity.class));
+                startActivity(new Intent(this, CreditActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 return true;
 
             default:

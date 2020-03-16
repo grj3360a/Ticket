@@ -16,6 +16,8 @@
     <string name="avecAide">Avec l\'aide de :</string>
     <string name="titleMainScreen">Nouveau ticket</string>
     <string name="magasinGroupTitle">Type de ticket</string>
+    <string name="emptyHistory">Aucun ticket enregistré...</string>
+    <string name="statsTitle">Statistiques</string>
     <plurals name="products">
         <item quantity="one">%s produit</item>
         <item quantity="other">%s produits</item>

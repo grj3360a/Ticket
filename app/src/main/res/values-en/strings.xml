@@ -16,8 +16,10 @@
     <string name="avecAide">With the help of :</string>
     <string name="titleMainScreen">New ticket</string>
     <string name="magasinGroupTitle">Ticket type</string>
+    <string name="emptyHistory">No ticket saved...</string>
     <plurals name="products">
         <item quantity="one">%s product</item>
         <item quantity="other">%s products</item>
     </plurals>
+    <string name="statsTitle">Statistics</string>
 </resources>

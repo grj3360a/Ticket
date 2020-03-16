@@ -21,6 +21,12 @@
     <string name="titleMainScreen">Nouveau ticket</string>
     <string name="magasinGroupTitle">Type de ticket</string>
     <string name="iut_link" translatable="false">https://iut.univ-tlse3.fr/</string>
+    <string name="emptyHistory">Aucun ticket enregistré...</string>
+    <string name="statsTitle">Statistiques</string>
+    <plurals name="tickets">
+        <item quantity="one">%s ticket</item>
+        <item quantity="other">%s tickets</item>
+    </plurals>
     <plurals name="products">
         <item quantity="one">%s produit</item>
         <item quantity="other">%s produits</item>

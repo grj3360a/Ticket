@@ -22,6 +22,19 @@ public abstract class TicketDao {
         insertAll(products);
     }
 
+    public boolean isEmpty(){
+        return this.getTicketWithProducts().isEmpty();
+    }
+
+    public double total(){
+        double total = 0D;
+
+        for (TicketWithProducts ticket : this.getTicketWithProducts())
+            total += ticket.total();
+
+        return total;
+    }
+
     @Insert
     public abstract void insertAll(Product... products);
 

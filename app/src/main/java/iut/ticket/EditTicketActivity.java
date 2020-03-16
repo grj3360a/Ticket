@@ -51,7 +51,7 @@ public class EditTicketActivity extends MenuedActivity {
         findViewById(R.id.deleteButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppDB.getDB(EditTicketActivity.this).ticketDao().delete(ticketWithProducts);
+                AppDB.getTicketDao().delete(ticketWithProducts);
                 finish();
             }
         });
