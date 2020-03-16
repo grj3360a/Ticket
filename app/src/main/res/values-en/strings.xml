@@ -22,4 +22,5 @@
         <item quantity="other">%s products</item>
     </plurals>
     <string name="statsTitle">Statistics</string>
+    <string name="ticketSaved">Edition saved</string>
 </resources>
